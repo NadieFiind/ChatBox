@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>{{ title }}</title>
+		<meta charset="utf-8">
+		<meta name="author" content="Nadie Fiind">
+		<meta name="description" content="Chatty chat heheh">
+		<meta name="robots" content="none">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+		
+		<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+		{{ turbo() }}
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+	</head>
+	<body>
+		<div id="messages-box">
+			{% for message in messages %}
+			<div class="message">
+				<span class="author">{{ message["author"] }}</span>
+				<br>
+				<div class="value">{{ message["message"] }}</div>
+			</div>
+			{% endfor %}
+		</div>
+		
+		<textarea id="message-input"></textarea>
+		<button class="unselectable" id="send-message-btn" onclick="sendMessage();">➤</button>
+	</body>
+</html>
